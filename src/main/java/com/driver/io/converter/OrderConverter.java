@@ -4,7 +4,9 @@ import com.driver.io.entity.OrderEntity;
 import com.driver.model.request.OrderDetailsRequestModel;
 import com.driver.model.response.OrderDetailsResponse;
 import com.driver.shared.dto.OrderDto;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class OrderConverter {
 
     public static OrderDto convertRequestToDto(OrderDetailsRequestModel requestModel){
