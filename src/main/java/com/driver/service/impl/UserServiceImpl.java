@@ -19,8 +19,8 @@ public  class UserServiceImpl implements UserService{
     UserRepository userRepository;
 
     @Override
-    public UserDto createUser(UserDetailsRequestModel user) throws Exception {
-        UserEntity userEntity = UserConverter.convertRequestToEntity(user);
+    public UserDto createUser(UserDto user) throws Exception {
+        UserEntity userEntity = UserConverter.convertDtoToEntity(user);
         userRepository.save(userEntity);
         return UserConverter.convertEntityToDto(userEntity);
     }
@@ -38,7 +38,7 @@ public  class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDto updateUser(String userId, UserDetailsRequestModel user) throws Exception {
+    public UserDto updateUser(String userId, UserDto user) throws Exception {
         long id = userRepository.findByUserId(userId).getId();
         UserEntity userEntity = UserEntity.builder()
                 .id(id)

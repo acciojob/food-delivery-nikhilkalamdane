@@ -36,13 +36,15 @@ public class UserController {
 
 	@PostMapping()
 	public UserResponse createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception{
-		UserDto userDto = userService.createUser(userDetails);
+		UserDto userDto = UserConverter.convertRequestToDto(userDetails);
+		userDto = userService.createUser(userDto);
 		return UserConverter.convertDtoToResponse(userDto);
 	}
 
 	@PutMapping(path = "/{id}")
 	public UserResponse updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails) throws Exception{
-		UserDto userDto = userService.updateUser(id, userDetails);
+		UserDto userDto = UserConverter.convertRequestToDto(userDetails);
+		userDto = userService.updateUser(id, userDto);
 		return UserConverter.convertDtoToResponse(userDto);
 	}
 

@@ -15,6 +15,15 @@ public class OrderConverter {
                 .build();
     }
 
+    public static OrderEntity convertDtoToEntity(OrderDto orderDto){
+        return OrderEntity.builder()
+                .userId(orderDto.getUserId())
+                .cost(orderDto.getCost())
+                .status(orderDto.isStatus())
+                .items(orderDto.getItems())
+                .build();
+    }
+
     public static OrderDto convertEntityToDto(OrderEntity orderEntity){
         return OrderDto.builder()
                 .orderId(orderEntity.getOrderId())
@@ -25,14 +34,6 @@ public class OrderConverter {
                 .build();
     }
 
-    public static OrderEntity convertDtoToEntity(OrderDto orderDto){
-        return OrderEntity.builder()
-                .userId(orderDto.getUserId())
-                .cost(orderDto.getCost())
-                .status(orderDto.isStatus())
-                .items(orderDto.getItems())
-                .build();
-    }
 
     public static OrderDetailsResponse convertDtoToResponse(OrderDto orderDto){
         return OrderDetailsResponse.builder()

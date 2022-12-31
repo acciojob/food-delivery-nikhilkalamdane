@@ -3,7 +3,6 @@ package com.driver.service.impl;
 import com.driver.io.converter.FoodConverter;
 import com.driver.io.entity.FoodEntity;
 import com.driver.io.repository.FoodRepository;
-import com.driver.model.request.FoodDetailsRequestModel;
 import com.driver.service.FoodService;
 import com.driver.shared.dto.FoodDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,8 @@ public class FoodServiceImpl implements FoodService {
     FoodRepository foodRepository;
 
     @Override
-    public FoodDto createFood(FoodDetailsRequestModel requestModel) {
-        FoodEntity foodEntity = FoodConverter.convertRequestToEntity(requestModel);
+    public FoodDto createFood(FoodDto foodDto) {
+        FoodEntity foodEntity = FoodConverter.convertDToToEntity(foodDto);
         foodEntity = foodRepository.save(foodEntity);
         return FoodConverter.convertEntityToDto(foodEntity);
     }
@@ -32,14 +31,14 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
-    public FoodDto updateFoodDetails(String foodId, FoodDetailsRequestModel foodDetails) throws Exception {
+    public FoodDto updateFoodDetails(String foodId, FoodDto foodDto) throws Exception {
         long id = foodRepository.findByFoodId(foodId).getId();
         FoodEntity foodEntity = FoodEntity.builder()
                 .id(id)
                 .foodId(foodId)
-                .foodName(foodDetails.getFoodName())
-                .foodCategory(foodDetails.getFoodCategory())
-                .foodPrice(foodDetails.getFoodPrice())
+                .foodName(foodDto.getFoodName())
+                .foodCategory(foodDto.getFoodCategory())
+                .foodPrice(foodDto.getFoodPrice())
                 .build();
         foodRepository.save(foodEntity);
 

@@ -7,11 +7,19 @@ import com.driver.shared.dto.FoodDto;
 
 public class FoodConverter {
 
-    public static FoodEntity convertRequestToEntity(FoodDetailsRequestModel requestModel) {
-        return FoodEntity.builder()
+    public static FoodDto convertRequestToDto(FoodDetailsRequestModel requestModel) {
+        return FoodDto.builder()
                 .foodName(requestModel.getFoodName())
                 .foodCategory(requestModel.getFoodCategory())
                 .foodPrice(requestModel.getFoodPrice())
+                .build();
+    }
+    public static FoodEntity convertDToToEntity(FoodDto foodDto){
+        return FoodEntity.builder()
+                .foodId(foodDto.getFoodId())
+                .foodName(foodDto.getFoodName())
+                .foodCategory(foodDto.getFoodCategory())
+                .foodPrice(foodDto.getFoodPrice())
                 .build();
     }
 

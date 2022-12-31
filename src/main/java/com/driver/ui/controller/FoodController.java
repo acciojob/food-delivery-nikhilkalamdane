@@ -38,13 +38,15 @@ public class FoodController {
 
 	@PostMapping("/create")
 	public FoodDetailsResponse createFood(@RequestBody FoodDetailsRequestModel foodDetails) {
-		FoodDto foodDto = foodService.createFood(foodDetails);
+		FoodDto foodDto = FoodConverter.convertRequestToDto(foodDetails);
+		foodDto = foodService.createFood(foodDto);
 		return FoodConverter.convertDtoToResponse(foodDto);
 	}
 
 	@PutMapping(path="/{id}")
 	public FoodDetailsResponse updateFood(@PathVariable String id, @RequestBody FoodDetailsRequestModel foodDetails) throws Exception{
-		FoodDto foodDto = foodService.updateFoodDetails(id,foodDetails);
+		FoodDto foodDto = FoodConverter.convertRequestToDto(foodDetails);
+		foodDto = foodService.updateFoodDetails(id,foodDto);
 		return FoodConverter.convertDtoToResponse(foodDto);
 	}
 

@@ -1,7 +1,6 @@
 package com.driver.service.impl;
 
 import com.driver.io.converter.OrderConverter;
-import com.driver.io.entity.FoodEntity;
 import com.driver.io.entity.OrderEntity;
 import com.driver.io.repository.OrderRepository;
 import com.driver.service.OrderService;
