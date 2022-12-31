@@ -2,6 +2,7 @@ package com.driver.service;
 
 import java.util.List;
 
+import com.driver.model.request.UserDetailsRequestModel;
 import com.driver.shared.dto.UserDto;
 
 /**
@@ -9,10 +10,10 @@ import com.driver.shared.dto.UserDto;
  */
 public interface UserService{
 
-	UserDto createUser(UserDto user) throws Exception;
+	UserDto createUser(UserDetailsRequestModel user) throws Exception;
 	UserDto getUser(String email) throws Exception;
 	UserDto getUserByUserId(String userId) throws Exception;
-	UserDto updateUser(String userId, UserDto user) throws Exception;
+	UserDto updateUser(String userId, UserDetailsRequestModel user) throws Exception;
 	void deleteUser(String userId) throws Exception;
 	List<UserDto> getUsers();
 }
