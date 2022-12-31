@@ -43,7 +43,7 @@ public class UserController {
 	@PutMapping(path = "/{id}")
 	public UserResponse updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails) throws Exception{
 		UserDto userDto = userService.updateUser(id, userDetails);
-		return null;
+		return UserConverter.convertUserDtoToResponse(userDto);
 	}
 
 	@DeleteMapping(path = "/{id}")
