@@ -9,7 +9,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class UserConverter {
 
-    public static UserEntity convertUserRequestToEntity(UserDetailsRequestModel requestModel){
+    public static UserEntity convertRequestToEntity(UserDetailsRequestModel requestModel){
         return UserEntity.builder()
                 .firstName(requestModel.getFirstName())
                 .lastName(requestModel.getLastName())
@@ -17,7 +17,7 @@ public class UserConverter {
                 .build();
     }
 
-    public static UserDto convertUserEntityToDto(UserEntity entity){
+    public static UserDto convertEntityToDto(UserEntity entity){
         return UserDto.builder()
                 .userId(entity.getUserId())
                 .firstName(entity.getFirstName())
@@ -26,7 +26,7 @@ public class UserConverter {
                 .build();
     }
 
-    public static UserEntity convertUserDtoToEntity(UserDto userDto){
+    public static UserEntity convertDtoToEntity(UserDto userDto){
         return UserEntity.builder()
                 .userId(userDto.getUserId())
                 .firstName(userDto.getFirstName())
@@ -35,7 +35,7 @@ public class UserConverter {
                 .build();
     }
 
-    public static UserResponse convertUserDtoToResponse(UserDto userDto){
+    public static UserResponse convertDtoToResponse(UserDto userDto){
         return UserResponse.builder()
                 .userId(userDto.getUserId())
                 .firstName(userDto.getFirstName())

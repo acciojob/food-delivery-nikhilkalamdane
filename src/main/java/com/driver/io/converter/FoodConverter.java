@@ -7,7 +7,7 @@ import com.driver.shared.dto.FoodDto;
 
 public class FoodConverter {
 
-    public static FoodEntity convertFoodRequestToEntity(FoodDetailsRequestModel requestModel) {
+    public static FoodEntity convertRequestToEntity(FoodDetailsRequestModel requestModel) {
         return FoodEntity.builder()
                 .foodName(requestModel.getFoodName())
                 .foodCategory(requestModel.getFoodCategory())

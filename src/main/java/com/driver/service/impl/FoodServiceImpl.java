@@ -20,7 +20,7 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public FoodDto createFood(FoodDetailsRequestModel requestModel) {
-        FoodEntity foodEntity = FoodConverter.convertFoodRequestToEntity(requestModel);
+        FoodEntity foodEntity = FoodConverter.convertRequestToEntity(requestModel);
         foodEntity = foodRepository.save(foodEntity);
         return FoodConverter.convertEntityToDto(foodEntity);
     }

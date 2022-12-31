@@ -31,19 +31,19 @@ public class UserController {
 	@GetMapping(path = "/{id}")
 	public UserResponse getUser(@PathVariable String id) throws Exception{
 		UserDto userDto = userService.getUserByUserId(id);
-		return UserConverter.convertUserDtoToResponse(userDto);
+		return UserConverter.convertDtoToResponse(userDto);
 	}
 
 	@PostMapping()
 	public UserResponse createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception{
 		UserDto userDto = userService.createUser(userDetails);
-		return UserConverter.convertUserDtoToResponse(userDto);
+		return UserConverter.convertDtoToResponse(userDto);
 	}
 
 	@PutMapping(path = "/{id}")
 	public UserResponse updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails) throws Exception{
 		UserDto userDto = userService.updateUser(id, userDetails);
-		return UserConverter.convertUserDtoToResponse(userDto);
+		return UserConverter.convertDtoToResponse(userDto);
 	}
 
 	@DeleteMapping(path = "/{id}")
@@ -63,7 +63,7 @@ public class UserController {
 		List<UserResponse> userResponseList = new ArrayList<>();
 
 		for(UserDto userDto: userDtoList){
-			UserResponse userResponse = UserConverter.convertUserDtoToResponse(userDto);
+			UserResponse userResponse = UserConverter.convertDtoToResponse(userDto);
 			userResponseList.add(userResponse);
 		}
 

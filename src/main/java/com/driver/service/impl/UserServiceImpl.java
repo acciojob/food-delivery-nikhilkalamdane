@@ -20,21 +20,21 @@ public  class UserServiceImpl implements UserService{
 
     @Override
     public UserDto createUser(UserDetailsRequestModel user) throws Exception {
-        UserEntity userEntity = UserConverter.convertUserRequestToEntity(user);
+        UserEntity userEntity = UserConverter.convertRequestToEntity(user);
         userRepository.save(userEntity);
-        return UserConverter.convertUserEntityToDto(userEntity);
+        return UserConverter.convertEntityToDto(userEntity);
     }
 
     @Override
     public UserDto getUser(String email) throws Exception {
         UserEntity userEntity = userRepository.findByEmail(email);
-        return UserConverter.convertUserEntityToDto(userEntity);
+        return UserConverter.convertEntityToDto(userEntity);
     }
 
     @Override
     public UserDto getUserByUserId(String userId) throws Exception {
         UserEntity userEntity = userRepository.findByUserId(userId);
-        return UserConverter.convertUserEntityToDto(userEntity);
+        return UserConverter.convertEntityToDto(userEntity);
     }
 
     @Override
@@ -49,7 +49,7 @@ public  class UserServiceImpl implements UserService{
                 .build();
 
         userRepository.save(userEntity);
-        return UserConverter.convertUserEntityToDto(userEntity);
+        return UserConverter.convertEntityToDto(userEntity);
     }
 
     @Override
@@ -66,7 +66,7 @@ public  class UserServiceImpl implements UserService{
         List<UserEntity> userEntityList = (List<UserEntity>) userRepository.findAll();
         List<UserDto> userDtoList = new ArrayList<>();
         for(UserEntity userEntity: userEntityList){
-            UserDto userDto = UserConverter.convertUserEntityToDto(userEntity);
+            UserDto userDto = UserConverter.convertEntityToDto(userEntity);
             userDtoList.add(userDto);
         }
         return userDtoList;
